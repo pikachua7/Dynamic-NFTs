@@ -102,7 +102,7 @@ contract Items is ERC721URIStorage{
     }
 
     //function for payment by user and assigning him the reward
-    function paymentwithReward(uint _itemId,string memory _tokenURI,address _user) public payable{
+    function paymentwithReward(uint _itemId,string memory _tokenURI) public payable{
         Item memory _item = items[_itemId];
 
         require(_item.prize >= msg.value);
@@ -164,7 +164,21 @@ contract Items is ERC721URIStorage{
         uint80 answeredInRound
     ) = priceFeed.latestRoundData();
         return price;
-  }
+    }
+
+    //Fetching Rewards of User
+    function fetchRewards() public view returns(uint){
+        uint totalCount = _rewardId.current();
+        // int itemCount = 0;
+        // uint currentIndex = 0;
+        // for(uint i=0;i<totalCount;i++){
+        //     if(items[i+1].owner == msg.sender){
+        //         itemCount++;
+        //     }
+        // }
+
+        return totalCount;
+    }
 
 
 }
