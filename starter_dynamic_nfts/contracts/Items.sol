@@ -38,7 +38,7 @@ contract Items is ERC721URIStorage{
 
     constructor(Token _token) ERC721("Pizzenia" , "PZN"){
         token = _token;
-        priceFeed = AggregatorV3Interface(0x9326BFA02ADD2366b30bacB125260Af641031331);
+        priceFeed = AggregatorV3Interface(0xd0D5e3DB44DE05E9F294BB0a3bEEaF030DE24Ada);
     }
 
     //Creating a Pizza

@@ -1,0 +1,88 @@
+/* nav {
+  position: absolute;
+    top: 0;
+    left: 0;
+  width: 100%;
+  height: 4em;
+  background-color: #85000c;
+} */
+.view-menu {
+}
+.cards {
+  margin: 2em;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 2em;
+  align-items: center;
+  justify-items: center;
+}
+
+/* Css for Login*/
+/* .allitems-container {
+  margin: 0;
+  padding: 0;
+} */
+
+.login-container {
+  margin: 0;
+  padding: 0;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+}
+section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+}
+section .login-img {
+  position: relative;
+  width: 50%;
+  height: 100%;
+}
+section .login-img img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+section .login-form {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+section .login-form img {
+  width: 7em;
+  height: 7em;
+}
+.metamask {
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: center;
+  margin: 0.5em 0 1.5em 0;
+  color: black;
+}
+.btn {
+  background-color: #85000b;
+  color: white;
+  border-radius: 0.5em;
+  font-weight: bold;
+}
+.login-btn {
+  margin-top: 1em;
+  padding: 0.3em;
+  width: 15em;
+  font-size: 1.2em;
+}
+.btn:hover {
+  color: #ffffff;
+}

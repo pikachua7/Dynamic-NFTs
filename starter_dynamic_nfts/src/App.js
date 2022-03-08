@@ -70,6 +70,7 @@ class App extends Component {
 
     const accounts = await web3.eth.getAccounts();
     this.setState({ account: accounts[0] });
+    console.log(this.state.account);
 
     const networkId = await web3.eth.net.getId();
     const TokenData = Token.networks[networkId];
@@ -106,7 +107,7 @@ class App extends Component {
           let tokenURI = await itemsContract.methods.tokenURI(i).call();
           let data = await itemsContract.methods.rewards(i).call();
           this.setState({
-            tokensList: [...this.state.tokenContract, {
+            tokensList: [...this.state.tokensList, {
               id: i,
               tokenURI,
               name: data.name,
@@ -153,9 +154,12 @@ class App extends Component {
     const res = await this.state.itemsContract.methods.paymentwithReward(id, imageURL).send({ from: this.state.account, value: window.web3.utils.toWei(prize.toString(), 'Ether') });
     //doubt
     console.log(res);
-    const itemId = res.events.Transfer.returnValues.itemId; //tokenId
+    const itemId = res.events.Transfer.returnValues.tokenId; //tokenId
+    console.log(itemId);
     const tokenURI = await this.state.itemsContract.methods.tokenURI(itemId).call();
+    console.log(tokenURI);
     const data = await this.state.itemsContract.methods.rewards(itemId).call();
+    console.log(data);
     const newToken = {
       id: itemId,
       name: itemName,
@@ -165,6 +169,7 @@ class App extends Component {
       blue: data.blue,
       prize: window.web3.utils.toWei(prize.toString(), 'Ether')
     }
+    console.log(newToken);
     this.setState({
       tokensList: [...this.state.tokensList, newToken]
     });
@@ -191,6 +196,7 @@ class App extends Component {
   }
 
   async getPrice() {
+    console.log(this.state.itemsContract);
     const ethPrice = await this.state.itemsContract.methods.getLatestPrice().call();
     return ethPrice;
   }
@@ -227,7 +233,7 @@ class App extends Component {
               <AddItem createItem={this.createItem.bind(this)} getPrice={this.getPrice.bind(this)} currentNetwork={this.state.currentNetwork} />
             </Route>
             <Route exact path="/item/:id">
-              <ItemDetail account={this.state.account} itemsList={this.state.itemsList} checkoutList={this.state.checkoutList} paymentwithReward={this.paymentwithReward.bind(this)} getBill={this.getBill.bind(this)} getPrice={this.getPrice.bind(this)} ethPrice={this.state.ethPrice} currentNetwork={this.state.currentNetwork} />
+              <ItemDetail account={this.state.account} itemsList={this.state.itemsList} checkoutList={this.state.checkoutList} paymentwithReward={this.paymentwithReward.bind(this)} getPrice={this.getPrice.bind(this)} ethPrice={this.state.ethPrice} currentNetwork={this.state.currentNetwork} />
             </Route>
           </Switch>
           <WalletModal connectToBlockchain={this.connectToBlockchain.bind(this)} changeNetwork={this.changeNetwork.bind(this)} setLoading={this.setLoading.bind(this)} />

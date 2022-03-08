@@ -57,6 +57,89 @@ export default function AddItem({ createItem, getPrice, currentNetwork }) {
   }
 
   return (
-    <div>AddItem</div>
+    <div className='add-pizza-container'>
+      <div className="row">
+        <div className="col-12 col-md-9 col-lg-8 m-auto">
+          
+          <div className="card mt-4">
+            <div className="card-body">
+              <h1 className="text-center mb-4">Add Item</h1>
+
+              <div className="row">
+                <div className="col-12 col-md-6">
+                  <div className="form-group">
+                    <label className="font-weight-bold">Name of the Item *</label>
+                    <input
+                      className="form-control"
+                      type="text"
+                      name="Name"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)} 
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <label className="font-weight-bold">Prize *</label>
+                    <div className="d-flex align-items-center">
+                      <div className="input-group mb-3 w-50">
+                        <input
+                          className="form-control "
+                          type="number"
+                          name="Prize"
+                          value={prize}
+                          onChange={(e) => handlePrize(e)} 
+                        />
+                        <div className="input-group-append">
+                          <span className="input-group-text">{currentNetwork}</span>
+                        </div>
+                      </div>
+                      <p>${finalPrize}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="col-12 col-md-6">
+                  <div className="form-group">
+                    <label className="font-weight-bold">Image of your Item</label>
+                    <div className="input-group">
+                      <div className="custom-file">
+                        <input type="file" className="custom-file-input" onChange={getFile} />
+                        <label className="custom-file-label">{fileName ? fileName : "Choose file"}</label>
+                      </div>
+                    </div>
+                    <p className="text-muted">* Image you upload cannot be removed</p>
+                  </div>
+
+                  <div className="form-group">
+                    <label className="font-weight-bold">Description *</label>
+                    <textarea
+                      className="form-control"
+                      type="text"
+                      name="description"
+                      rows="5"
+                      value={description}
+                      onChange={(e) => setDescription(e.target.value)}  />
+                  </div>
+                </div>
+              </div>
+
+              {!loading ? (
+                <button
+                  className="btn primary-bg-color btn-lg w-25 float-right"
+                  onClick={addItem}
+                  disabled={!name || !prize || !description}>
+                  Create
+                </button>
+              ) : (
+                <center>
+                  {/* <Spinner /> */}
+                </center>
+              ) }
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
   )
 }
