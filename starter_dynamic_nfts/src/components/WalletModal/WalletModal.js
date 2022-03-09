@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { GlobalContext } from '../../context/GlobalState';
 import metamaskLogo from './metamask-logo.svg'
 
+import './WalletModal.css'
 export default function WalletModal({ connectToBlockchain, changeNetwork, setLoading }) {
 
   const { setWalletAddress } = useContext(GlobalContext);
@@ -40,7 +41,7 @@ export default function WalletModal({ connectToBlockchain, changeNetwork, setLoa
                     alt="Metamask"
                     onClick={() => handleConnect("Metamask")}
                     data-dismiss="modal" />
-                  <p className="lead text-center">Metamask</p>
+                  <p className="lead text-center">METAMASK</p>
                 </div>
               </div>
             </div>

@@ -1,0 +1,11 @@
+.wallet-img{
+    width: 10em;
+    height: 10em;
+}
+.wallet-img:hover{
+    cursor: pointer;
+}
+.text-center{
+    font-size: 1.5em;
+    font-weight: bold;
+}

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-
-
+import { Link } from 'react-router-dom';
+import './Checkout.css'
+import Gift from './gift.png'
 export default function Checkout({ paymentwithReward, id, imageURL, itemName, getPrice, currentNetwork, walletAddress }) {
 
   const [amount, setAmount] = useState('');
@@ -52,18 +53,18 @@ export default function Checkout({ paymentwithReward, id, imageURL, itemName, ge
       <div className="modal fade" id="checkout" tabIndex="-1" role="dialog">
         <div className="modal-dialog modal-dialog-centered" role="document">
           <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title">Pay {currentNetwork}</h5>
-              <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-
+        
             <div className="modal-body">
               {!showReward ? (
                 <div className="form-group my-1">
-                  <span className="badge badge-primary">Your Balance</span>
-                  <p className="lead">{balance / 10 ** 18} {currentNetwork}</p>
+                  <div className='popup-header'>
+                  <h5 className="modal-title">Checkout</h5>
+              <    button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+                  </div>
+                  <p className='balance'><span className="badge badge-primary">Balance </span>{balance / 10 ** 18} {currentNetwork}</p>
+  
                   <label className="text-muted font-weight-bold" htmlFor="text">Add to Cart</label>
                   <div class="input-group mb-3">
                     <input
@@ -74,21 +75,24 @@ export default function Checkout({ paymentwithReward, id, imageURL, itemName, ge
                       onChange={(e) => handleAmount(e)}
                     />
                     <div className="input-group-append">
-                      <span className="input-group-text">{currentNetwork}</span>
+                      <span className="input-group-text">${price}</span>
                     </div>
                   </div>
-                  <p className="lead">${price}</p>
+                  <p className="lead"></p>
                 </div>
               ) : (
                 <>
-                  <h2 className="h4 text-center mb-3">You Earn NFT and 5 PZN Tokens!</h2>
-                  <div className="card" style={{ background: `rgb(${nft.red}, ${nft.green}, ${nft.blue})` }}>
+                  <div className='reveal-nft'>
+                  <div><h2 className="h4 text-center mb-3">You have earned a NFT and 5 PZN coins!</h2></div>
+                  {/* <div className="nft-gift" style={{ background: `rgb(${nft.red}, ${nft.green}, ${nft.blue})` }}> */}
                     <div className="card-body px-4">
                       {console.log(nft.tokenURI)}
 
-                      {/* <img className="img-rounded" src={nft.tokenURI ? `https://ipfs.infura.io/ipfs/${nft.tokenURI}` : 'other image'} alt="NFT" /> */}
+                      <img className="img-rounded" style={{width:'10em',height:'10em'}} src={Gift} alt="NFT" />
+                      
                     </div>
                   </div>
+                  {/* </div> */}
                 </>
               )}
 
@@ -103,7 +107,7 @@ export default function Checkout({ paymentwithReward, id, imageURL, itemName, ge
                       <button
                         className="btn primary-bg-color"
                         onClick={checkout}>
-                        Send
+                        Pay
                       </button>
                     </>
                   ) : (
@@ -112,7 +116,11 @@ export default function Checkout({ paymentwithReward, id, imageURL, itemName, ge
                   )}
                 </>
               ) : (
-                <button type="button" className="btn btn-light" data-dismiss="modal">Close</button>
+                <div className='close-section'>
+                  <p>Check My Rewards section to claim your NFT</p>
+                    <button type="button" className="btn btn-light" data-dismiss="modal">Close</button>
+                </div>
+                
               )}
 
             </div>

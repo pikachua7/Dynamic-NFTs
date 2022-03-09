@@ -19,19 +19,19 @@ export default function Navbar(loading, currentNetwork, reset) {
       {walletAddress?<nav className="">
       <div className="navbar">
         <ul>
+          <li className="navbar-items logo">Logo</li>
         {walletAddress &&
-          <li className="navbar-items" data-toggle="collapse" data-target=".navbar-collapse.show">
+          <li className="navbar-items item1" data-toggle="collapse" data-target=".navbar-collapse.show">
             <Link className="" to="/">Dashboard</Link>
           </li>
 }
         {walletAddress &&
-            <li className="navbar-items" data-toggle="collapse" data-target=".navbar-collapse.show">
+            <li className="navbar-items item2" data-toggle="collapse" data-target=".navbar-collapse.show">
               <Link className="" to="/userRewards">My Rewards</Link>
             </li>
           }
-        </ul>
-        <ul className='right'>
-          <li className="navbar-items" data-toggle="collapse" data-target=".navbar-collapse.show">
+
+          <li className="navbar-items item3" data-toggle="collapse" data-target=".navbar-collapse.show">
 
             {walletAddress ? <a
               target="_blank"
@@ -47,8 +47,8 @@ export default function Navbar(loading, currentNetwork, reset) {
             }
           </li>
           {walletAddress &&
-            <li className="navbar-items" data-toggle="collapse" data-target=".navbar-collapse.show">
-              <button className="navbar-disconnect-btn" onClick={() => handleLogout()}>Disconnect Wallet</button>
+            <li className="navbar-items item4" data-toggle="collapse" data-target=".navbar-collapse.show">
+              <button className="navbar-disconnect-btn" onClick={() => handleLogout()}>Logout</button>
             </li>
           }
         </ul>
