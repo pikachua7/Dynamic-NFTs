@@ -18,6 +18,7 @@ import WalletModal from './components/WalletModal/WalletModal';
 //Smart Contracts
 import Items from './abis/Items.json';
 import Token from './abis/Token.json';
+import Random from './abis/Random.json';
 
 //CSS
 import './App.css';
@@ -43,7 +44,9 @@ class App extends Component {
     tokensList: [],
     ethPrice: 0,
     currentNetwork: "MATIC",
-    loading: false
+    loading: false,
+    randomContract : null,
+    randomAddress : ""
   }
 
   //Connection to Wallet
@@ -73,6 +76,9 @@ class App extends Component {
     console.log(this.state.account);
 
     const networkId = await web3.eth.net.getId();
+
+    //Token Contract
+
     const TokenData = Token.networks[networkId];
 
     if (TokenData) {
@@ -84,6 +90,8 @@ class App extends Component {
     else {
       window.alert('Token Contract not deployed to detected network');
     }
+
+    //Items contract
 
     const networkData = await Items.networks[networkId];
 
@@ -122,6 +130,27 @@ class App extends Component {
     }
     else {
       window.alert('Items Contract not deployed to detected network');
+    }
+
+    //random number contract
+
+    const randomData = await Random.networks[networkId];
+    console.log(randomData);
+    if(randomData){
+      const abi = Random.abi;
+      console.log(abi);
+      const address = Random.networks[networkId].address;
+      this.setState({ randomAddress: address });
+
+      const randomContract = new web3.eth.Contract(abi, address);
+      this.setState({ randomContract });
+      console.log(randomContract);
+
+      const res = await randomContract.methods.randomResult().call();
+      console.log(res);
+    }
+    else {
+      window.alert('Random Contract not deployed to detected network');
     }
   }
 
@@ -220,14 +249,14 @@ class App extends Component {
   render() {
     return (
       <GlobalProvider>
-        <Router> 
+        <Router>
           <Navbar loading={this.state.loading} currentNetwork={this.state.currentNetwork} reset={this.reset.bind(this)} />
           <Switch>
             <Route exact path="/">
               <AllItems loading={this.state.loading} itemsList={this.state.itemsList} ethPrice={this.state.ethPrice} itemsAddress={this.state.itemsAddress} currentNetwork={this.state.currentNetwork} />
             </Route>
             <Route exact path="/userRewards">
-              <UserReward changeRewardColor={this.changeRewardColor.bind(this)} tokenContract={this.state.tokenContract} tokensList={this.state.tokensList} currentNetwork={this.state.currentNetwork} />
+              <UserReward changeRewardColor={this.changeRewardColor.bind(this)} tokenContract={this.state.tokenContract} randomContract={this.state.randomContract} tokensList={this.state.tokensList} currentNetwork={this.state.currentNetwork} />
             </Route>
             <Route exact path="/addItem">
               <AddItem createItem={this.createItem.bind(this)} getPrice={this.getPrice.bind(this)} currentNetwork={this.state.currentNetwork} />

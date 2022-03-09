@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import ipfsClient from 'ipfs-http-client';
 
+import './AddItem.css'
 const ipfs = ipfsClient({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' });
 
 export default function AddItem({ createItem, getPrice, currentNetwork }) {
@@ -17,7 +18,7 @@ export default function AddItem({ createItem, getPrice, currentNetwork }) {
 
   async function addItem() {
     try {
-      setLoading(true); 
+      setLoading(true);
       if (buffer) {
         ipfs.add(buffer, async (error, result) => {
           if (error) {
@@ -60,7 +61,7 @@ export default function AddItem({ createItem, getPrice, currentNetwork }) {
     <div className='add-pizza-container'>
       <div className="row">
         <div className="col-12 col-md-9 col-lg-8 m-auto">
-          
+
           <div className="card mt-4">
             <div className="card-body">
               <h1 className="text-center mb-4">Add Item</h1>
@@ -74,7 +75,7 @@ export default function AddItem({ createItem, getPrice, currentNetwork }) {
                       type="text"
                       name="Name"
                       value={name}
-                      onChange={(e) => setName(e.target.value)} 
+                      onChange={(e) => setName(e.target.value)}
                     />
                   </div>
 
@@ -87,7 +88,7 @@ export default function AddItem({ createItem, getPrice, currentNetwork }) {
                           type="number"
                           name="Prize"
                           value={prize}
-                          onChange={(e) => handlePrize(e)} 
+                          onChange={(e) => handlePrize(e)}
                         />
                         <div className="input-group-append">
                           <span className="input-group-text">{currentNetwork}</span>
@@ -118,7 +119,7 @@ export default function AddItem({ createItem, getPrice, currentNetwork }) {
                       name="description"
                       rows="5"
                       value={description}
-                      onChange={(e) => setDescription(e.target.value)}  />
+                      onChange={(e) => setDescription(e.target.value)} />
                   </div>
                 </div>
               </div>
@@ -134,7 +135,7 @@ export default function AddItem({ createItem, getPrice, currentNetwork }) {
                 <center>
                   {/* <Spinner /> */}
                 </center>
-              ) }
+              )}
             </div>
           </div>
         </div>

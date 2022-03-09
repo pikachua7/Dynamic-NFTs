@@ -1,55 +1,109 @@
-import React , {useEffect , useContext} from 'react';
-import { useParams } from 'react-router-dom';
-import moment from 'moment';
-import $ from 'jquery';
+import React, { useEffect, useContext } from "react";
+import { useParams } from "react-router-dom";
+import moment from "moment";
+import $ from "jquery";
 
-import {GlobalContext} from '../../context/GlobalState';
-import Checkout from '../Checkout/Checkout';
+import { GlobalContext } from "../../context/GlobalState";
+import Checkout from "../Checkout/Checkout";
 
-export default function ItemDetail({account,itemsList,checkoutList,paymentwithReward,getPrice,ethPrice,currentNetwork}) {
-  
-  const {id} = useParams();
-  const {walletAddress} = useContext(GlobalContext);
+import "./ItemDetail.css";
 
- 
+export default function ItemDetail({
+  account,
+  itemsList,
+  checkoutList,
+  paymentwithReward,
+  getPrice,
+  ethPrice,
+  currentNetwork,
+}) {
+  const { id } = useParams();
+  const { walletAddress } = useContext(GlobalContext);
 
-  const getUSDValue = () =>{
+  const getUSDValue = () => {
     let totalUSDValue = 0;
-    if(itemsList[id-1]?.prize){
-      totalUSDValue = (ethPrice * +window.web3.utils.fromWei(itemsList[id - 1]?.prize, 'Ether')) / 100000000;
+    if (itemsList[id - 1]?.prize) {
+      totalUSDValue =
+        (ethPrice *
+          +window.web3.utils.fromWei(itemsList[id - 1]?.prize, "Ether")) /
+        100000000;
     }
     return (
       <h5 className="card-title">
         Prize ${Number.parseFloat(totalUSDValue).toFixed(2)}
       </h5>
-    )
-  }
-  
+    );
+  };
+
   return (
     <div className="container">
-      <h1 className="my-3">Item Detail</h1>
-        <div className="row">
-          <div className="card">
-            <div className="card-body">
+      {/* <h1 className="">Item Detail</h1>
+            <div className="frame">
               <img
-                className="card-img-top mb-3"
+                className=""
                 src={itemsList[id - 1]?.imageURL ? `https://ipfs.infura.io/ipfs/${itemsList[id - 1]?.imageURL}` : 'Other Work'}
                 alt="Item" />
               
-              <div className="d-flex justify-content-between align-items-center">
+              <div className="">
                 {getUSDValue()}
               </div>
               
-              <p className="lead m-0">{itemsList[id - 1]?.name}</p>
-              <p className="text-secondary">{itemsList[id - 1]?.description}</p>
+              <p className="">{itemsList[id - 1]?.name}</p>
+              <p className="">{itemsList[id - 1]?.description}</p>
               
-              {walletAddress ? <button className="btn primary-bg-color btn-block" data-toggle="modal" data-target="#checkout">
+              {walletAddress ? <button className="" data-toggle="modal" data-target="#checkout">
                 Pay
-              </button> : <p className="lead text-center text-danger">Connect to your wallet to Pay</p> }
+              </button> : <p className="">Connect to your wallet to Pay</p> }
+            </div> */}
+
+            
+      {/* OLD */}
+      <div className="detail-page-container">
+        <div className="frame">
+          <div className="detail-page-img">
+            <img
+              className=""
+              src={
+                itemsList[id - 1]?.imageURL
+                  ? `https://ipfs.infura.io/ipfs/${itemsList[id - 1]?.imageURL}`
+                  : "Other Work"
+              }
+              alt="Item"
+            />
+          </div>
+          <div className="detail-page-description">
+            <div className="grid-item item1">
+              <h1>{itemsList[id - 1]?.name}</h1>
             </div>
+            <div className="grid-item item2">
+              <p>{itemsList[id - 1]?.description}</p>
+            </div>
+            <div className="grid-item item3">
+              <h3>{getUSDValue()}</h3>
+            </div>
+            {walletAddress ? (
+              <button
+                className="grid-item item4 checkout-btn"
+                data-toggle="modal"
+                data-target="#checkout"
+              >
+                Pay
+              </button>
+            ) : (
+              <p className="">Connect to your wallet to Pay</p>
+            )}
           </div>
         </div>
-      <Checkout paymentwithReward={paymentwithReward} id={id} imageURL ={itemsList[id-1]?.imageURL} itemName={itemsList[id-1]?.name} getPrice={getPrice} currentNetwork={currentNetwork} walletAddress={walletAddress} />
+      </div>
+      <Checkout
+        paymentwithReward={paymentwithReward}
+        id={id}
+        imageURL={itemsList[id - 1]?.imageURL}
+        itemName={itemsList[id - 1]?.name}
+        getPrice={getPrice}
+        currentNetwork={currentNetwork}
+        walletAddress={walletAddress}
+      />
     </div>
-  )
+  );
 }

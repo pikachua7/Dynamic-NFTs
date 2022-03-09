@@ -10,7 +10,7 @@ export const GlobalContext = createContext(inititalState);
 export const GlobalProvider = ({ children }) => {
     const [state, dispatch] = useReducer(AppReducer, inititalState);
 
-    function setWalletAddress(address){
+    function setWalletAddress(address) {
         dispatch({
             type: "SET_WALLETADDRESS",
             payload: address

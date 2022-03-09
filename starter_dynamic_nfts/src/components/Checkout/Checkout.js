@@ -60,18 +60,18 @@ export default function Checkout({ paymentwithReward, id, imageURL, itemName, ge
             </div>
 
             <div className="modal-body">
-              { !showReward ? (
+              {!showReward ? (
                 <div className="form-group my-1">
                   <span className="badge badge-primary">Your Balance</span>
                   <p className="lead">{balance / 10 ** 18} {currentNetwork}</p>
                   <label className="text-muted font-weight-bold" htmlFor="text">Add to Cart</label>
                   <div class="input-group mb-3">
                     <input
-                        className="form-control"
-                        name="Amount"
-                        type="number"
-                        value={amount}
-                        onChange={(e) => handleAmount(e)} 
+                      className="form-control"
+                      name="Amount"
+                      type="number"
+                      value={amount}
+                      onChange={(e) => handleAmount(e)}
                     />
                     <div className="input-group-append">
                       <span className="input-group-text">{currentNetwork}</span>
@@ -82,19 +82,20 @@ export default function Checkout({ paymentwithReward, id, imageURL, itemName, ge
               ) : (
                 <>
                   <h2 className="h4 text-center mb-3">You Earn NFT and 5 PZN Tokens!</h2>
-                  <div className="card" style={{ background: `rgb(${nft.red}, ${nft.green}, ${nft.blue})`}}>
+                  <div className="card" style={{ background: `rgb(${nft.red}, ${nft.green}, ${nft.blue})` }}>
                     <div className="card-body px-4">
-                      
+                      {console.log(nft.tokenURI)}
+
                       {/* <img className="img-rounded" src={nft.tokenURI ? `https://ipfs.infura.io/ipfs/${nft.tokenURI}` : 'other image'} alt="NFT" /> */}
                     </div>
                   </div>
                 </>
-              ) }
-              
+              )}
+
             </div>
 
             <div className="modal-footer">
-              { !showReward ? (
+              {!showReward ? (
                 <>
                   {!loading ? (
                     <>
@@ -102,21 +103,21 @@ export default function Checkout({ paymentwithReward, id, imageURL, itemName, ge
                       <button
                         className="btn primary-bg-color"
                         onClick={checkout}>
-                          Send
+                        Send
                       </button>
                     </>
                   ) : (
                     // <Spinner />
                     <></>
-                  ) }
+                  )}
                 </>
-                ) : (
-                  <button type="button" className="btn btn-light" data-dismiss="modal">Close</button>
-                ) }
-              
+              ) : (
+                <button type="button" className="btn btn-light" data-dismiss="modal">Close</button>
+              )}
+
             </div>
           </div>
-          
+
         </div>
       </div>
     </div>

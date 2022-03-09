@@ -1,0 +1,47 @@
+.navbar {
+  margin: 0;
+}
+.navbar-items {
+  color: black;
+  width: max-content;
+  padding: 0.1em 1em;
+  font-size: 0.8em;
+  font-weight: bold;
+  margin: 0;
+}
+.navbar-items a {
+  color: black;
+  width: max-content;
+  padding: 0.1em 1em;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+.navbar ul {
+  text-decoration: none;
+  list-style-type: none;
+  display: flex;
+  /* justify-content: flex-end; */
+  align-items: center;
+  padding-right: 2em;
+  padding-bottom: 0.5em;
+  padding-top: 0.5em;
+  margin-top: 0;
+  margin: 0;
+}
+.navbar-disconnect-btn {
+  background-color: #85000b;
+  font-weight: bold;
+  border: none;
+  color: white;
+  padding: 0.5em 1em;
+  width: 10em;
+  border-radius: 0.5em;
+}
+.navbar-items a:hover {
+  font-size: bold;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: white;
+}
+.rewards {
+}

@@ -1,0 +1,51 @@
+.detail-page-container {
+  margin: 1em 3em;
+}
+.frame {
+  background-color: #fff6f3d2;
+  border-radius: 1em;
+  display: flex;
+  position: relative;
+  display: flex;
+  height: 60vh;
+}
+.frame img {
+  border-top-left-radius: 1em;
+  border-bottom-left-radius: 1em;
+  position: relative;
+  width: 50vw;
+  height: 60vh;
+  object-fit: cover;
+}
+.back-btn {
+  opacity: 75%;
+  background-color: transparent;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  /* padding: 1em; */
+  margin-bottom: 1em;
+}
+.back-btn img {
+  height: 0.7em;
+  margin-bottom: 0.2em;
+  margin-right: 0.7em;
+}
+.detail-page-description {
+  padding: 0.5em;
+  margin: 1em;
+  display: grid;
+  grid-template-columns: auto;
+}
+.item1 h1 {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+.checkout-btn {
+  width:7em;
+  color:white;
+  border-radius: 0.5em;
+  height:3em;
+  padding:0 1em;
+  background-color: #85000C;
+}

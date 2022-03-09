@@ -9,100 +9,118 @@ import "./AggregatorV3Interface.sol";
 import "./Token.sol";
 
 /**
-   * Network: Kovan Testnet
-   * Aggregator: ETH/USD
-   * Address: 0x9326BFA02ADD2366b30bacB125260Af641031331
-   */
-  /**
-   * Network: Rinkeby Testnet
-   * Aggregator: ETH/USD
-   * Address: 0x8A753747A1Fa494EC906cE90E9f37563A8AF630e
-   */
-  /**
-   * Network: Mumbai Testnet
-   * Aggregator: MATIC/USD
-   * Address: 0xd0D5e3DB44DE05E9F294BB0a3bEEaF030DE24Ada
-   */
+ * Network: Kovan Testnet
+ * Aggregator: ETH/USD
+ * Address: 0x9326BFA02ADD2366b30bacB125260Af641031331
+ */
+/**
+ * Network: Rinkeby Testnet
+ * Aggregator: ETH/USD
+ * Address: 0x8A753747A1Fa494EC906cE90E9f37563A8AF630e
+ */
+/**
+ * Network: Mumbai Testnet
+ * Aggregator: MATIC/USD
+ * Address: 0xd0D5e3DB44DE05E9F294BB0a3bEEaF030DE24Ada
+ */
 
-contract Items is ERC721URIStorage{
+contract Items is ERC721URIStorage {
     using Counters for Counters.Counter;
-    uint public itemCount = 0;
+    uint256 public itemCount = 0;
     Counters.Counter public _rewardId;
 
-    mapping(uint => Item) public items;
-    mapping(uint => Reward) public rewards;
+    mapping(uint256 => Item) public items;
+    mapping(uint256 => Reward) public rewards;
 
     AggregatorV3Interface internal priceFeed;
 
     Token private token;
 
-    constructor(Token _token) ERC721("Pizzenia" , "PZN"){
+    constructor(Token _token) ERC721("Pizzenia", "PZN") {
         token = _token;
-        priceFeed = AggregatorV3Interface(0xd0D5e3DB44DE05E9F294BB0a3bEEaF030DE24Ada);
+        priceFeed = AggregatorV3Interface(
+            0xd0D5e3DB44DE05E9F294BB0a3bEEaF030DE24Ada
+        );
     }
 
     //Creating a Pizza
-    struct Item{
-        uint itemId;
+    struct Item {
+        uint256 itemId;
         string name;
         string description;
         string imageURL;
-        uint prize;
+        uint256 prize;
         address payable owner;
     }
 
     //Reward for the user
-    struct Reward{
-        uint rewardId;
+    struct Reward {
+        uint256 rewardId;
         string name;
-        uint red;
-        uint green;
-        uint blue;
-        uint prize;
+        uint256 red;
+        uint256 green;
+        uint256 blue;
+        uint256 prize;
     }
 
     //Pizza created
     event ItemCreated(
-        uint itemId,
+        uint256 itemId,
         string name,
         string description,
         string imageURL,
-        uint prize,
+        uint256 prize,
         address payable owner
     );
 
-
     //Payment of User to Pizzenia
     event Payment(
-        uint itemId,
-        uint amount,
-        uint prize,
+        uint256 itemId,
+        uint256 amount,
+        uint256 prize,
         address from,
         address payable owner
     );
 
     //Changing RGB Color
-    event RGBColor(
-        uint itemId,
-        uint red,
-        uint green,
-        uint blue
-    );
+    event RGBColor(uint256 itemId, uint256 red, uint256 green, uint256 blue);
 
     //function for creating a item
-    function createItem(string memory _name , string memory _description , string memory _imageURL , uint _prize ) public {
+    function createItem(
+        string memory _name,
+        string memory _description,
+        string memory _imageURL,
+        uint256 _prize
+    ) public {
         require(_prize > 0);
-        require(bytes(_name).length>0);
-        require(bytes(_description).length>0);
-        
+        require(bytes(_name).length > 0);
+        require(bytes(_description).length > 0);
+
         itemCount++;
 
-        items[itemCount] = Item(itemCount,_name,_description,_imageURL,_prize,payable(msg.sender));
-        emit ItemCreated(itemCount,_name,_description,_imageURL,_prize,payable(msg.sender));
+        items[itemCount] = Item(
+            itemCount,
+            _name,
+            _description,
+            _imageURL,
+            _prize,
+            payable(msg.sender)
+        );
+        emit ItemCreated(
+            itemCount,
+            _name,
+            _description,
+            _imageURL,
+            _prize,
+            payable(msg.sender)
+        );
     }
 
     //function for payment by user and assigning him the reward
-    function paymentwithReward(uint _itemId,string memory _tokenURI) public payable{
+    function paymentwithReward(uint256 _itemId, string memory _tokenURI)
+        public
+        payable
+    {
         Item memory _item = items[_itemId];
 
         require(_item.prize >= msg.value);
@@ -112,63 +130,76 @@ contract Items is ERC721URIStorage{
 
         //Reward for the user
         _rewardId.increment();
-        uint newRewardId = _rewardId.current();
-        _safeMint(msg.sender,newRewardId);
-        _setTokenURI(newRewardId,_tokenURI);
+        uint256 newRewardId = _rewardId.current();
+        _safeMint(msg.sender, newRewardId);
+        _setTokenURI(newRewardId, _tokenURI);
 
         //Random RGB values
-        uint red = getRandomValue(255);
-        uint green = getRandomValue(255);
-        uint blue = getRandomValue(255);
+        uint256 red = getRandomValue(255);
+        uint256 green = getRandomValue(255);
+        uint256 blue = getRandomValue(255);
 
-        rewards[newRewardId] = Reward(newRewardId,_item.name,red,green,blue,msg.value);
+        rewards[newRewardId] = Reward(
+            newRewardId,
+            _item.name,
+            red,
+            green,
+            blue,
+            msg.value
+        );
 
         //Giving Pizzenia Tokens to the User
-        token.transfer(msg.sender,5000000000000000000);
+        token.transfer(msg.sender, 5000000000000000000);
 
-        emit Payment(_itemId,msg.value,_item.prize,msg.sender,_item.owner);
-          
+        emit Payment(_itemId, msg.value, _item.prize, msg.sender, _item.owner);
     }
 
     //function for generating random number
-    function getRandomValue(uint mod) internal view returns(uint) {
-        return uint(keccak256(abi.encodePacked(block.timestamp, block.difficulty, msg.sender))) % mod;
+    function getRandomValue(uint256 mod) internal view returns (uint256) {
+        return
+            uint256(
+                keccak256(
+                    abi.encodePacked(
+                        block.timestamp,
+                        block.difficulty,
+                        msg.sender
+                    )
+                )
+            ) % mod;
     }
 
     //function for changing colors for the reward earned
-    function changeRewardColor(uint _tokenId) external {
-        require(token.balanceOf(msg.sender)>0);
-        
+    function changeRewardColor(uint256 _tokenId) external {
+        require(token.balanceOf(msg.sender) > 0);
+
         Reward memory _reward = rewards[_tokenId];
-        uint red = getRandomValue(255);
-        uint green = getRandomValue(255);
-        uint blue = getRandomValue(255);
+        uint256 red = getRandomValue(255);
+        uint256 green = getRandomValue(255);
+        uint256 blue = getRandomValue(255);
         _reward.red = red;
         _reward.green = green;
         _reward.blue = blue;
         rewards[_tokenId] = _reward;
 
-        token.payOneToken(msg.sender,address(this));
-        emit RGBColor(_tokenId,red,green,blue);
-
+        token.payOneToken(msg.sender, address(this));
+        emit RGBColor(_tokenId, red, green, blue);
     }
 
-
     //getting latest price feeds via chainlink
-    function getLatestPrice() public view returns (int) {
-    (
-        uint80 roundID, 
-        int price,
-        uint startedAt,
-        uint timeStamp,
-        uint80 answeredInRound
-    ) = priceFeed.latestRoundData();
+    function getLatestPrice() public view returns (int256) {
+        (
+            uint80 roundID,
+            int256 price,
+            uint256 startedAt,
+            uint256 timeStamp,
+            uint80 answeredInRound
+        ) = priceFeed.latestRoundData();
         return price;
     }
 
     //Fetching Rewards of User
-    function fetchRewards() public view returns(uint){
-        uint totalCount = _rewardId.current();
+    function fetchRewards() public view returns (uint256) {
+        uint256 totalCount = _rewardId.current();
         // int itemCount = 0;
         // uint currentIndex = 0;
         // for(uint i=0;i<totalCount;i++){
@@ -179,6 +210,4 @@ contract Items is ERC721URIStorage{
 
         return totalCount;
     }
-
-
 }

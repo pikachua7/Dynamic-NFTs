@@ -1,7 +1,7 @@
 export default (state, action) => {
-    switch(action.type){
+    switch (action.type) {
         case "SET_WALLETADDRESS":
-            return{
+            return {
                 ...state,
                 walletAddress: action.payload
             }
