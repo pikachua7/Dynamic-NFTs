@@ -1,7 +1,7 @@
 import React from 'react';
-
+import './Footer.css'
 export default function Footer() {
   return (
-    <div> Created by Team Aatmanirbhar</div>
+    <div className='footer'> Created by Team Aatmanirbhar</div>
   )
 }

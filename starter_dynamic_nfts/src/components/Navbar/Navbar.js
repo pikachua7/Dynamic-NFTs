@@ -15,19 +15,22 @@ export default function Navbar(loading, currentNetwork, reset) {
     history.push('/');
   }
   return (
-    <nav className="">
+    <>
+      {walletAddress?<nav className="">
       <div className="navbar">
         <ul>
+        {walletAddress &&
           <li className="navbar-items" data-toggle="collapse" data-target=".navbar-collapse.show">
             <Link className="" to="/">Dashboard</Link>
           </li>
-          {walletAddress &&
+}
+        {walletAddress &&
             <li className="navbar-items" data-toggle="collapse" data-target=".navbar-collapse.show">
               <Link className="" to="/userRewards">My Rewards</Link>
             </li>
           }
         </ul>
-        <ul>
+        <ul className='right'>
           <li className="navbar-items" data-toggle="collapse" data-target=".navbar-collapse.show">
 
             {walletAddress ? <a
@@ -36,7 +39,11 @@ export default function Navbar(loading, currentNetwork, reset) {
               rel="noopener noreferrer"
               href={"https://explorer-mumbai.maticvigil.com/address/" + walletAddress}>
               {walletAddress.substring(0, 5)}...{walletAddress.substring(37, 42)}
-            </a> : <button className="" data-toggle="modal" data-target="#walletModal" disabled={loading}>Open Wallet</button>
+            </a> : <></>
+            
+            
+            
+            // <button className="" data-toggle="modal" data-target="#walletModal" disabled={loading}>Open Wallet</button>
             }
           </li>
           {walletAddress &&
@@ -46,6 +53,7 @@ export default function Navbar(loading, currentNetwork, reset) {
           }
         </ul>
       </div>
-    </nav>
+    </nav>:<></>}
+    </>
   )
 }

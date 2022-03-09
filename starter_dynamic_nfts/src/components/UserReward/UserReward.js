@@ -1,6 +1,9 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { GlobalContext } from '../../context/GlobalState';
 
+// css
+import './UserReward.css'
+
 export default function UserReward({ changeRewardColor, tokenContract, tokensList, currentNetwork }) {
   const { walletAddress } = useContext(GlobalContext);
   console.log(walletAddress);
@@ -44,6 +47,7 @@ export default function UserReward({ changeRewardColor, tokenContract, tokensLis
 
   //game
   const checkGuessNumber = async (e) => {
+    setTokenAmount(tokenAmount - 1);
     e.preventDefault()
     if (!guessNumber || guessNumber < 0 || guessNumber > 20) {
       setFeedbackMsg('Please enter a valid number from 0 to 20.')
@@ -54,7 +58,7 @@ export default function UserReward({ changeRewardColor, tokenContract, tokensLis
 
     if (num1 == num2) {
       try {
-        setFeedbackMsg('🏆🏆 You Win! 🏆🏆 ')
+        setFeedbackMsg('🏆🏆 You Won! 🏆🏆 ')
         setWinner(true)
         // clean up notification again after 11 seconds
         setTimeout(() => {
@@ -72,73 +76,98 @@ export default function UserReward({ changeRewardColor, tokenContract, tokensLis
     }
     const dif = Math.abs(num1 - num2)
     if (dif <= 3) {
-      setFeedbackMsg("You're very close😌💭👍!")
+      setFeedbackMsg("You're very close!")
       return
     }
-    if (dif > 3 && dif <= 8) {
-      setFeedbackMsg("You're lukewarm😊😊😊")
+    if (dif > 3 && dif <= 10) {
+      setFeedbackMsg("You're close but some where far!")
       return
     }
     if (dif > 10) {
-      setFeedbackMsg("You're a bit chilly 😬 😬 😬")
+      setFeedbackMsg("You're ver far!")
       return
     }
   }
 
   return (
-    <div className="container" style={{ minHeight: '65vh' }}>
-      <div className="d-flex align-items-center">
-        <h1 className="my-3">My Tokens</h1>
-        {/* {walletAddress && <img
-          className="ml-2"
-          width='35'
-          height='35'
-          src={`data:image/png;base64,${new Identicon(walletAddress, 30).toString()}`}
-          alt="Icon" />} */}
+    <div className="container" style={{}}>
+      <div className="game-frame">
+            <p className="token-info">{tokenAmount} PZN <br/><span>Pay 1 PZN to change the color of your NFTs</span></p>
+
+            <h2>
+                Enter a number from 0 - 20
+              </h2>
+              <form className="" noValidate autoComplete="off">
+                <input
+                  id="outlined-basic"
+                  label="Guess a number between 0 - 20"
+                  variant="outlined"
+                  className="game-input"
+                  defaultValue={guessNumber}
+                  type="number"
+                  onChange={(e) => setGuessNumber(e.target.value)}
+                />
+                <br/>
+                <button
+                  className='go-btn'
+                  size="large"
+                  variant="contained"
+                  color="primary"
+                  onClick={checkGuessNumber}
+                >
+                  Go
+                </button>
+              </form>
+
+              <p className="">{feedbackMsg}</p>
+              {/* {walletAddress && <img
+                className="ml-2"
+                width='35'
+                height='35'
+                src={`data:image/png;base64,${new Identicon(walletAddress, 30).toString()}`}
+                alt="Icon" />} */}
       </div>
-
-      <p className="mb-4">You have {tokenAmount} PZN - Pay 1 PZN to change the color of your NFTs</p>
-
-
-      
-
-
-
-
-
-
-
-
-
-      <div className="row">
+        {winner ? <div className="nft-grid">
         {tokensList.map(token => {
           return (
-            
-            <div className="col-6 col-md-4 col-lg-3 mb-3" key={token.id}>
-              <div className="card" style={{ background: `rgb(${token.red}, ${token.green}, ${token.blue})` }}>
-                <div className="card-body px-4">
+            <div className='nft-card'>
+                 <div className="nft" key={token.id}>
+              <div className="nft-inner-section" style={{ background: `rgb(${token.red}, ${token.green}, ${token.blue})` }}>
+                <div className="nft-img">
                   {console.log(token.tokenURI)}
-                  <img className="img-rounded relative" src={token.tokenURI ? `https://ipfs.infura.io/ipfs/${token.tokenURI}` : '/images/no-image.png'} alt="NFT" />
-
-                  <span className="badge secondary-bg-color token__label">
-                    <p className="m-0">{currentNetwork}</p>
-                    <p className="m-0">{window.web3.utils.fromWei(token.prize.toString(), 'Ether')} </p>
-                  </span>
-
-                  <center>
-                    <span className="badge badge-warning text-center">{token.name}</span>
-                  </center>
+                  <img className="" src={token.tokenURI ? `https://ipfs.infura.io/ipfs/${token.tokenURI}` : '/images/no-image.png'} alt="NFT" />
+                 
                 </div>
               </div>
+              <div className="nft-details">
+                    <div className="nft-price">{window.web3.utils.fromWei(token.prize.toString(), 'Ether')} {currentNetwork}</div>
+                    <div className="nft-name">{token.name}</div>
+              </div>
 
+  
+                    
               <center>
-                {loading ? <></> : <button className="btn primary-bg-color btn-sm" onClick={() => handleClick(token.id)}>Change Color</button>}
+                {loading ? <></> : <button className="change-color-btn" onClick={() => handleClick(token.id)}>Change Color</button>}
               </center>
+            </div>
+
             </div>
           )
         })}
-      </div>
-      {!tokensList.length && <p className="text-danger lead text-center mt-5">You do not have any NFTs.  You can earn some NFTs by donating some crypto to restaurants.</p>}
+      </div> : <></>}
+
+      
+        
+
+
+
+
+
+
+
+
+      
+      {!tokensList.length && <p className="no-nft-msg">You do not have any NFTs</p>}
     </div>
   )
 }

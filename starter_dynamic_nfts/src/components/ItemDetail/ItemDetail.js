@@ -30,7 +30,7 @@ export default function ItemDetail({
     }
     return (
       <h5 className="card-title">
-        Prize ${Number.parseFloat(totalUSDValue).toFixed(2)}
+        ${Number.parseFloat(totalUSDValue).toFixed(2)}
       </h5>
     );
   };

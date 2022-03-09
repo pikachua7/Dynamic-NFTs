@@ -9,11 +9,14 @@
   display: flex;
   height: 60vh;
 }
+.detail-page-img {
+  flex-basis: 10em;
+}
 .frame img {
   border-top-left-radius: 1em;
   border-bottom-left-radius: 1em;
   position: relative;
-  width: 50vw;
+  width: 40vw;
   height: 60vh;
   object-fit: cover;
 }
@@ -32,20 +35,22 @@
   margin-right: 0.7em;
 }
 .detail-page-description {
+  width: 100%;
   padding: 0.5em;
   margin: 1em;
   display: grid;
   grid-template-columns: auto;
 }
 .item1 h1 {
-  font-size: 1.5em;
+  font-size: 1.9em;
   font-weight: bold;
 }
 .checkout-btn {
-  width:7em;
-  color:white;
+  width: 7em;
+  color: white;
   border-radius: 0.5em;
-  height:3em;
-  padding:0 1em;
-  background-color: #85000C;
+  height: 3em;
+  padding: 0 1em;
+  background-color: #85000c;
+  border: none;
 }

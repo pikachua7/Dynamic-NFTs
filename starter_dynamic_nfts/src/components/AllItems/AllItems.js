@@ -14,6 +14,9 @@ import Items from '../../abis/Items.json';
 //css
 import './Items.css'
 
+//images
+// import landingImage from './images/login-image2.jpg'
+
 export default function AllItems({ loading, itemsList, ethPrice, itemsAddress, currentNetwork }) {
 
   const { walletAddress } = useContext(GlobalContext);
@@ -48,12 +51,15 @@ export default function AllItems({ loading, itemsList, ethPrice, itemsAddress, c
 
   return (
     <div className="">
-      {walletAddress ?
-        <p>
-          <Link to="/"></Link>
-        </p> : <button className="" data-toggle="modal" data-target="#walletModal" disabled={loading}>Open Wallet</button>
-      }
-
+        {walletAddress ?
+          <p>
+            <Link to="/"></Link>
+          </p> : 
+          <div className='landing-page'>
+            <h1>Get Your Favourite Pizza <br/><span>Now</span></h1>
+          <button className="order-now-btn" data-toggle="modal" data-target="#walletModal" disabled={loading}>Order Now</button>
+          </div>
+        }
       <div className="">
         <div className="all-items-grid">
           {itemsList.map(item => {
@@ -74,11 +80,9 @@ export default function AllItems({ loading, itemsList, ethPrice, itemsAddress, c
                       <div className='details-section'>
                         <div><h3>{item.name}</h3></div>
                         <div className='price-details'>
-                          <div><p>{getUSDValue(item)}</p></div>
+                          <p>{getUSDValue(item)}</p>
                         </div>
-
                       </div>
-
                     </div>
                   </div>
                 </div>
