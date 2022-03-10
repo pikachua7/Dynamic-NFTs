@@ -21,7 +21,7 @@ export default function WalletModal({ connectToBlockchain, changeNetwork, setLoa
     }
   }
   return (
-    <div className="container my-5">
+    <div className="">
       <div className="modal fade" id="walletModal" tabIndex="-1" role="dialog">
         <div className="modal-dialog modal-dialog-centered" role="document">
           <div className="modal-content">

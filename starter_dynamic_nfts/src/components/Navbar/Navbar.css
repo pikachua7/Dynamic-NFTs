@@ -1,44 +1,60 @@
-.navbar {
-  margin: 0;
-}
 .navbar-items {
   color: black;
   width: max-content;
-  padding: 0.1em 1em;
+  /* padding: 0.1em 1em; */
   font-size: 0.8em;
   font-weight: bold;
-  margin: 0;
+  /* margin: 0; */
 }
 .navbar-items a {
-  color: black;
+  color: white;
   width: max-content;
   padding: 0.1em 1em;
-  font-size: 1.2em;
+  font-size: 1em;
   font-weight: bold;
 }
+
+.navbar-items a:hover {
+  color: white;
+  width: max-content;
+  padding: 0.1em 1em;
+  font-size: 1em;
+  font-weight: bold;
+  text-decoration:none;
+}
+
+.navbar{
+  padding: 0;
+  background-color: black;
+  color: white;
+}
 .navbar ul {
+  color: white;
   text-decoration: none;
   list-style-type: none;
   display: flex;
   width: 100%;
-  padding-right: 2em;
-  padding-bottom: 0.5em;
-  padding-top: 0.5em;
-  margin-top: 0;
+  padding: 0.6em 4em;
+  justify-content: flex-end;
+  align-items: center;
   margin: 0;
+
 }
 .navbar-disconnect-btn {
-  background-color: #85000b;
+  background-color: transparent;
   font-weight: bold;
   border: none;
   color: white;
   padding: 0.5em 1em;
   width: 10em;
   border-radius: 0.5em;
+  border: 1px solid #ffffff;
 }
-.navbar-items a:hover {
-  font-size: bold;
-  cursor: pointer;
-  text-decoration: underline;
-  text-decoration-color: white;
+.nav-right,.nav-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nav-left{
+  margin-right: auto;
 }

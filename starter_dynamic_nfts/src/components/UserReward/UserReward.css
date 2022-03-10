@@ -32,7 +32,7 @@
   height: 16em;
 }
 .change-color-btn {
-  background-color: #85000b;
+  background-color: #F85902;
   margin-top: 1em;
   width: 100%;
   padding: 0.5em 1em;
@@ -95,14 +95,14 @@
 .game-input {
   width: 18em;
   height: 2.5em;
-  border: 2px solid #85000b;
+  border: 2px solid #F85902;
   background-color: transparent;
   border-radius: 0.5em;
   text-align: center;
 }
 .go-btn {
   width: 9em;
-  background-color: #85000b;
+  background-color: #F85902;
   padding: 0.4em 1em;
   border: none;
   border-radius: 0.5em;
@@ -115,6 +115,6 @@
 .no-nft-msg {
   text-align: center;
   font-size: 2em;
-  color: #85000b;
+  color: #F85902;
   /* font-weight: bold; */
 }

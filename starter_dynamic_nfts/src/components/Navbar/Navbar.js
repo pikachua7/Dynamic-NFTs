@@ -19,8 +19,9 @@ export default function Navbar(loading, currentNetwork, reset) {
       {walletAddress?<nav className="">
       <div className="navbar">
         <ul>
-          <li className="navbar-items logo">Logo</li>
-        {walletAddress &&
+          <div className='nav-left'><li className="navbar-items logo">Logo</li></div>
+          <div className='nav-center'>
+          {walletAddress &&
           <li className="navbar-items item1" data-toggle="collapse" data-target=".navbar-collapse.show">
             <Link className="" to="/">Dashboard</Link>
           </li>
@@ -30,7 +31,9 @@ export default function Navbar(loading, currentNetwork, reset) {
               <Link className="" to="/userRewards">My Rewards</Link>
             </li>
           }
-
+          </div>
+        
+          <div className='nav-right'>
           <li className="navbar-items item3" data-toggle="collapse" data-target=".navbar-collapse.show">
 
             {walletAddress ? <a
@@ -51,6 +54,8 @@ export default function Navbar(loading, currentNetwork, reset) {
               <button className="navbar-disconnect-btn" onClick={() => handleLogout()}>Logout</button>
             </li>
           }
+            </div>
+
         </ul>
       </div>
     </nav>:<></>}

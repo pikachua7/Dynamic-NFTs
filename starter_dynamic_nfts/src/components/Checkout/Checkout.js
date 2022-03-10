@@ -49,7 +49,7 @@ export default function Checkout({ paymentwithReward, id, imageURL, itemName, ge
   }
 
   return (
-    <div className="container my-5">
+    <div className="">
       <div className="modal fade" id="checkout" tabIndex="-1" role="dialog">
         <div className="modal-dialog modal-dialog-centered" role="document">
           <div className="modal-content">

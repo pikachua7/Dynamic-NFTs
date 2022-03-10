@@ -13,9 +13,13 @@ import Items from '../../abis/Items.json';
 
 //css
 import './Items.css'
+import Carousel from 'react-bootstrap/Carousel'
 
-//images
-// import landingImage from './images/login-image2.jpg'
+// images
+import Image1 from './images/image1.jpg'
+import Image2 from './images/image2.jpg'
+import Image3 from './images/image3.jpg'
+import Image4 from './images/image4.jpg'
 
 export default function AllItems({ loading, itemsList, ethPrice, itemsAddress, currentNetwork }) {
 
@@ -51,14 +55,12 @@ export default function AllItems({ loading, itemsList, ethPrice, itemsAddress, c
 
   return (
     <div className="">
+     
         {walletAddress ?
           <p>
             <Link to="/"></Link>
-          </p> : 
-          <div className='landing-page'>
-            <h1>Get Your Favourite Pizza <br/><span>Now</span></h1>
-          <button className="order-now-btn" data-toggle="modal" data-target="#walletModal" disabled={loading}>Order Now</button>
-          </div>
+          </p> : <button className="order-now-btn" data-toggle="modal" data-target="#walletModal" disabled={loading}>Order Now</button>
+
         }
       <div className="">
         <div className="all-items-grid">
@@ -82,6 +84,11 @@ export default function AllItems({ loading, itemsList, ethPrice, itemsAddress, c
                         <div className='price-details'>
                           <p>{getUSDValue(item)}</p>
                         </div>
+                        <div>
+                        <Link to={`/item/${item.itemId}`}>
+                            <button className='order-btn'>Order Now</button>
+                            </Link>
+                          </div>
                       </div>
                     </div>
                   </div>

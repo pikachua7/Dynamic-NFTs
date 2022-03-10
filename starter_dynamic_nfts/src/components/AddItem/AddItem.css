@@ -55,7 +55,7 @@ section .add-pizza {
   background-color: transparent;
   border-radius: 0.5em;
   padding: 0.3em 0.5em;
-  border: 2px solid #85000b;
+  border: 2px solid #F85902;
   width: 20em;
   height: 3em;
   margin: 0.1em 0 1em 0;
@@ -64,7 +64,7 @@ section .add-pizza {
   margin-bottom: 0.1em;
 }
 .file-input::-webkit-file-upload-button {
-  background-color: hsla(355, 100%, 26%, 60%);
+  background-color: #F85902;
   border: none;
   color: white;
   padding: 0.3em;

@@ -11,16 +11,20 @@
 .btn-light,.primary-bg-color{
     width: 5em;
 }
+.primary-bg-color{
+    background-color: #F85902;
+    color: white;
+}
 .btn-light{
     background-color: transparent;
-    border: 1px solid #85000b;
-    color: #85000b;
+    border: 1px solid #F85902;
+    color: #F85902;
 }
 .form-control{
-    border:1px solid #85000b;
+    border:1px solid #F85902;
 }
 .input-group-text{
-    border:1px solid #85000b;
+    border:1px solid #F85902;
     background-color: transparent;
 }
 .badge-primary{

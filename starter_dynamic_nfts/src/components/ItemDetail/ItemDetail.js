@@ -36,7 +36,7 @@ export default function ItemDetail({
   };
 
   return (
-    <div className="container">
+    <div className="">
       {/* <h1 className="">Item Detail</h1>
             <div className="frame">
               <img
