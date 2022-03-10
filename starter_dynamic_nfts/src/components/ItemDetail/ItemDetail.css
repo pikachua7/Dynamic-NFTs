@@ -12,14 +12,18 @@
 }
 .detail-page-img {
   flex-basis: 10em;
+  width : 45vw;
+  height: 45vh;
+  object-fit: contain;
+  background-size: contain;
 }
 .frame img {
   border-top-left-radius: 1em;
   border-bottom-left-radius: 1em;
   position: relative;
   width: 40vw;
-  height: 60vh;
-  object-fit: cover;
+  height: 59vh;
+  object-fit: contain;
 }
 .back-btn {
   opacity: 75%;

@@ -86,7 +86,7 @@ export default function Checkout({ paymentwithReward, id, imageURL, itemName, ge
               ) : (
                 <>
                   <div className='reveal-nft'>
-                  <div><h2 className="h4 text-center mb-3">You have earned a NFT and 5 PZN coins!</h2></div>
+                  <div><h2 className="h4 text-center mb-3">You have earned a NFT and 5 CRZ coins!</h2></div>
                   {/* <div className="nft-gift" style={{ background: `rgb(${nft.red}, ${nft.green}, ${nft.blue})` }}> */}
                     <div className="card-body px-4">
                       {console.log(nft.tokenURI)}

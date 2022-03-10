@@ -266,7 +266,7 @@ class App extends Component {
             </Route>
           </Switch>
           <WalletModal connectToBlockchain={this.connectToBlockchain.bind(this)} changeNetwork={this.changeNetwork.bind(this)} setLoading={this.setLoading.bind(this)} />
-          <Footer />
+          {/* <Footer /> */}
         </Router>
       </GlobalProvider>
     )

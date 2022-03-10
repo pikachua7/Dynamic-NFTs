@@ -54,7 +54,7 @@ export default function UserReward({ changeRewardColor, tokenContract, tokensLis
       setFeedbackMsg('Please enter a valid number from 0 to 20.')
     }
 
-    let num1 = winningNumber
+    let num1 = 15;
     let num2 = parseInt(guessNumber)
 
     if (num1 == num2) {
@@ -93,7 +93,7 @@ export default function UserReward({ changeRewardColor, tokenContract, tokensLis
   return (
     <div className="container" style={{}}>
       <div className="game-frame">
-            <p className="token-info">{tokenAmount} PZN <br/><span>Pay 1 PZN to change the color of your NFTs</span></p>
+            <p className="token-info">{tokenAmount} CRZ <br/><span>Pay 1 CRZ to change the color of your NFTs</span></p>
 
             <h2>
                 Enter a number from 0 - 20
@@ -148,7 +148,7 @@ export default function UserReward({ changeRewardColor, tokenContract, tokensLis
   
                     
               <center>
-                {loading ? <Spinner/> : <button className="change-color-btn" onClick={() => handleClick(token.id)}>Change Color</button>}
+                {loading ? <></> : <button className="change-color-btn" onClick={() => handleClick(token.id)}>Change Color</button>}
               </center>
             </div>
 

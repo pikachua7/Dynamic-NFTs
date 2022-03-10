@@ -60,8 +60,13 @@ export default function AllItems({ loading, itemsList, ethPrice, itemsAddress, c
         {walletAddress ?
           <p>
             <Link to="/"></Link>
-          </p> : <button className="order-now-btn" data-toggle="modal" data-target="#walletModal" disabled={loading}>Order Now</button>
-
+          </p> : 
+          <div className='landing-page'>
+            <p className='name'>CRIZZA</p>
+            <p className='tagline'>Decentralize Your Pizza Journey with us</p>
+            
+          <button className="order-now-btn" data-toggle="modal" data-target="#walletModal" disabled={loading}>Order Now</button>
+          </div>
         }
       <div className="">
         <div className="all-items-grid">
@@ -102,6 +107,7 @@ export default function AllItems({ loading, itemsList, ethPrice, itemsAddress, c
       </div>
 
     </div>
+
 
   )
 }

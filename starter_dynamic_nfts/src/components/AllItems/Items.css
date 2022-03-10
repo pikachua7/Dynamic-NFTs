@@ -7,7 +7,7 @@ body {
   margin: 2.5em;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  column-gap: 0.4em;
+  column-gap: 0.9em;
   row-gap: 5em;
   align-items: center;
   justify-items: center;
@@ -67,7 +67,7 @@ section .login-form img {
   color: #ffffff;
 }
 .card {
-  width: 16em;
+  width: 12em;
   border: none;
   border-radius: 0.5em;
   height: 19em;
@@ -79,8 +79,8 @@ section .login-form img {
 } */
 
 .image-section img {
-  width: 16em;
-  height: 14em;
+  width: 12em;
+  height: 12em;
   border-top-left-radius: 0.5em;
   border-top-right-radius: 0.5em;
   object-fit: cover;
@@ -155,25 +155,20 @@ section .login-form img {
   padding: 0.5em 1em;
   position: absolute;
   top: 80%;
-  left: 50%;
+  right: 5em;
   transform: translate(-50%,-50%);
   background-color: #F85902;
   border: none;
   color: white;
   border-radius: 1em;
 }
-.landing-page-image{
+.landing-page{
   position: absolute;
+  top:0;
+  bottom: 0;
   width: 100%;
   height: 100vh;
-  background-size: cover;
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-}
-.carousel {
-  position: absolute;
-  width: 100%;
-  height: 100vh;
+  background-image: url('./images/login-image.jpg');
   background-size: cover;
   background-position: 50% 50%;
   background-repeat: no-repeat;
@@ -187,3 +182,27 @@ section .login-form img {
   border-bottom-right-radius: 0.5em;
   padding: 0.3em;
 }
+.name{
+  font-size: 5em;
+  color: #ffffff;
+  position: absolute;
+  top:40%;
+  right: 2em;
+}
+.tagline{
+  font-size: 2em;
+  color: #ffffff;
+  position: absolute;
+  top:60%;
+  right: 4.9em;
+}
+/* hr{
+  font-size: 2em;
+  color: #ffffff;
+  position: absolute;
+  top:50%;
+  right: 0.1em;
+  width: 100%;
+  background-color: #ffffff;
+} */
+
