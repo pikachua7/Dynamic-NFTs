@@ -42,11 +42,11 @@ contract Random is VRFConsumerBase {
     function fulfillRandomness(bytes32 requestId, uint256 randomness) internal override {
         bytes32 i = requestId;
         i = requestId;
-        randomResult = (randomness % 20) + 1;
+        randomResult = (randomness % 5) + 1;
     }
 
     function getRandom() public view returns (uint256) {
-        uint256 numb = (randomResult % 20) + 1;
+        uint256 numb = (randomResult % 5) + 1;
         return numb;
     }
 

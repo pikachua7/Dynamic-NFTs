@@ -36,7 +36,7 @@ contract Items is ERC721URIStorage {
 
     Token private token;
 
-    constructor(Token _token) ERC721("Pizzenia", "PZN") {
+    constructor(Token _token) ERC721("Crizza", "CRZ") {
         token = _token;
         priceFeed = AggregatorV3Interface(
             0xd0D5e3DB44DE05E9F294BB0a3bEEaF030DE24Ada
@@ -173,9 +173,9 @@ contract Items is ERC721URIStorage {
         require(token.balanceOf(msg.sender) > 0);
 
         Reward memory _reward = rewards[_tokenId];
-        uint256 red = getRandomValue(255);
-        uint256 green = getRandomValue(255);
-        uint256 blue = getRandomValue(255);
+        uint256 red = getRandomValue(251);
+        uint256 green = getRandomValue(254);
+        uint256 blue = getRandomValue(253);
         _reward.red = red;
         _reward.green = green;
         _reward.blue = blue;

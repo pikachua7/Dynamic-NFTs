@@ -2,7 +2,8 @@ import React, { useEffect, useContext, useState } from 'react';
 import { GlobalContext } from '../../context/GlobalState';
 
 // css
-import './UserReward.css'
+import './UserReward.css';
+import Spinner from '../Spinner/Spinner';
 
 export default function UserReward({ changeRewardColor, tokenContract, tokensList, currentNetwork }) {
   const { walletAddress } = useContext(GlobalContext);
@@ -147,7 +148,7 @@ export default function UserReward({ changeRewardColor, tokenContract, tokensLis
   
                     
               <center>
-                {loading ? <></> : <button className="change-color-btn" onClick={() => handleClick(token.id)}>Change Color</button>}
+                {loading ? <Spinner/> : <button className="change-color-btn" onClick={() => handleClick(token.id)}>Change Color</button>}
               </center>
             </div>
 

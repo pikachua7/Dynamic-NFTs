@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Checkout.css'
 import Gift from './gift.png'
+import Confetti from 'react-confetti'
+import Spinner from '../Spinner/Spinner';
+
 export default function Checkout({ paymentwithReward, id, imageURL, itemName, getPrice, currentNetwork, walletAddress }) {
 
   const [amount, setAmount] = useState('');
@@ -111,8 +114,7 @@ export default function Checkout({ paymentwithReward, id, imageURL, itemName, ge
                       </button>
                     </>
                   ) : (
-                    // <Spinner />
-                    <></>
+                    <Spinner />
                   )}
                 </>
               ) : (
@@ -122,7 +124,11 @@ export default function Checkout({ paymentwithReward, id, imageURL, itemName, ge
                 </div>
                 
               )}
-
+                <Confetti
+            width={500}
+            numberOfPieces={100}
+            run={showReward}
+          />
             </div>
           </div>
 

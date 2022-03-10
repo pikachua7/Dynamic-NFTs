@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 contract Token is ERC20 {
     bool internal isCreateToken = false;
 
-    constructor() ERC20("Pizzenia", "PZN") {}
+    constructor() ERC20("Crizza", "CRZ") {}
 
     function createTokens(address _recipient) external {
         require(isCreateToken == false);
