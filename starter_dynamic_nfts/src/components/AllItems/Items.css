@@ -67,27 +67,23 @@ section .login-form img {
   color: #ffffff;
 }
 .card {
-  width: 12em;
+  width: 15em;
+  height: max-content;
   border: none;
   border-radius: 0.5em;
   height: 19em;
   background-color: #fff;
-  /* box-shadow: 0px 1px 50px 2px rgba(0, 0, 0, 0.103); */
+  box-shadow: 0px 1px 50px 2px rgba(0, 0, 0, 0.103);
+  /* box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px; */
 }
-/* .card:hover{
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
-} */
-
 .image-section img {
-  width: 12em;
-  height: 12em;
+  width: 15em;
+  height: 15em;
   border-top-left-radius: 0.5em;
   border-top-right-radius: 0.5em;
   object-fit: cover;
+  border-bottom: 1px solid #000;
 }
-/* .image-section:hover{
-  content: 'VIEW';
-} */
 .details-section {
   width: 100%;
   padding:0 0 0 0;
@@ -206,3 +202,68 @@ section .login-form img {
   background-color: #ffffff;
 } */
 
+
+/* New CSS */
+
+/* .nft-grid {
+  margin: 2.5em;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  column-gap: 1em;
+  row-gap: 2em;
+  align-items: center;
+  justify-items: center;
+} */
+.pizza img {
+  background-color: #FFF6F1;
+  padding: 0.5em;
+  width: 16em;
+  height: 16em;
+  object-fit: cover;
+}
+.pizza-img img {
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
+}
+.pizza {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 16em;
+  border: none;
+  border-radius: 6em;
+  height: 16em;
+}
+.pizza-inner-section {
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
+  height: 16em;
+}
+.order-btn {
+  background-color: #F85902;
+  margin-top: 1em;
+  width: 100%;
+  padding: 0.5em 1em;
+  color: white;
+  border: none;
+  border-bottom-left-radius: 1em;
+  border-bottom-right-radius: 1em;
+}
+.pizza-details {
+  padding: 1em 1em 0 1em;
+  display: flex;
+  flex-direction: row;
+}
+.pizza-card {
+  background-color: #fff;
+  padding: 0em 0em 6em 0em;
+  border-radius: 1em;
+  box-shadow: 0px 1px 40px 2px rgba(0, 0, 0, 0.1);
+}
+.pizza-name {
+  font-size: 1em;
+}
+.pizza-price {
+  font-size: 0.8em;
+  margin-left: auto;
+}

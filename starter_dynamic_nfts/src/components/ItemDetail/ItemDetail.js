@@ -29,35 +29,15 @@ export default function ItemDetail({
         100000000;
     }
     return (
-      <h5 className="card-title">
-        ${Number.parseFloat(totalUSDValue).toFixed(2)}
+      <h5 className="price-title">
+        Serves 1 <span>@ {Number.parseFloat(totalUSDValue).toFixed(2)}$</span>
       </h5>
     );
   };
 
   return (
     <div className="">
-      {/* <h1 className="">Item Detail</h1>
-            <div className="frame">
-              <img
-                className=""
-                src={itemsList[id - 1]?.imageURL ? `https://ipfs.infura.io/ipfs/${itemsList[id - 1]?.imageURL}` : 'Other Work'}
-                alt="Item" />
-              
-              <div className="">
-                {getUSDValue()}
-              </div>
-              
-              <p className="">{itemsList[id - 1]?.name}</p>
-              <p className="">{itemsList[id - 1]?.description}</p>
-              
-              {walletAddress ? <button className="" data-toggle="modal" data-target="#checkout">
-                Pay
-              </button> : <p className="">Connect to your wallet to Pay</p> }
-            </div> */}
-
-            
-      {/* OLD */}
+     
       <div className="detail-page-container">
         <div className="frame">
           <div className="detail-page-img">
@@ -87,7 +67,7 @@ export default function ItemDetail({
                 data-toggle="modal"
                 data-target="#checkout"
               >
-                Pay
+                Add
               </button>
             ) : (
               <p className="">Connect to your wallet to Pay</p>

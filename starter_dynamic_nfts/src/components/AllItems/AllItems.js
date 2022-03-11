@@ -72,34 +72,59 @@ export default function AllItems({ loading, itemsList, ethPrice, itemsAddress, c
         <div className="all-items-grid">
           {itemsList.map(item => {
             return (
-              <div className="view-menu" key={item.itemId}>
-                {/* N */}
-                <div className="cards">
-                  <div className="grid-item">
-                    <div className='card'>
-                      <div className='image-section'>
-                        <div>
+              <div className='pizza-card'>
+                 <div className="pizza" key={item.itemId}>
+                   <div className="pizza-inner-section">
+                     <div className="pizza-img">
+                        
                           <Link to={`/item/${item.itemId}`}>
-                            <img
-                              src={item.imageURL ? `https://ipfs.infura.io/ipfs/${item.imageURL}` : 'other image'}
-                              alt="Item" />
-                          </Link></div>
-                      </div>
-                      <div className='details-section'>
-                        <div><h3>{item.name}</h3></div>
-                        <div className='price-details'>
-                          <p>{getUSDValue(item)}</p>
-                        </div>
-                        <div>
-                        <Link to={`/item/${item.itemId}`}>
+                                  <img
+                                    src={item.imageURL ? `https://ipfs.infura.io/ipfs/${item.imageURL}` : 'other image'}
+                                    alt="Item" />
+                                </Link>
+                     </div>
+                   </div>
+                 <div className="pizza-details">
+                       <div className="pizza-name">{item.name}</div>
+                       <div className="pizza-price">{getUSDValue(item)}</div>
+                 </div>
+                 
+                 <center>
+                 <Link to={`/item/${item.itemId}`}>
                             <button className='order-btn'>Order Now</button>
-                            </Link>
-                          </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                             </Link>
+                 </center>
+         </div>
+
+         </div>
+              // <div className="view-menu" key={item.itemId}>
+              //   {/* N */}
+              //   <div className="cards">
+              //     <div className="grid-item">
+              //       <div className='card'>
+              //         <div className='image-section'>
+              //           <div>
+              //             <Link to={`/item/${item.itemId}`}>
+              //               <img
+              //                 src={item.imageURL ? `https://ipfs.infura.io/ipfs/${item.imageURL}` : 'other image'}
+              //                 alt="Item" />
+              //             </Link></div>
+              //         </div>
+              //         <div className='details-section'>
+              //           <div><h3>{item.name}</h3></div>
+              //           <div className='price-details'>
+              //             <p>{getUSDValue(item)}</p>
+              //           </div>
+              //           <div>
+              //           <Link to={`/item/${item.itemId}`}>
+              //               <button className='order-btn'>Order Now</button>
+              //               </Link>
+              //             </div>
+              //         </div>
+              //       </div>
+              //     </div>
+              //   </div>
+              // </div>
             )
           })}
         </div>
